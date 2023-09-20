@@ -29,4 +29,3 @@ func Fly() -> void:
 func Die() -> void:
 		sprite.stop()
 		set_physics_process(false)
-		GameManager.PlayerDied()

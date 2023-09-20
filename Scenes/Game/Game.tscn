@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://24ec325ptbun"]
+[gd_scene load_steps=7 format=3 uid="uid://24ec325ptbun"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_4k5vs"]
 [ext_resource type="Texture2D" uid="uid://c8obqlny2hf5o" path="res://assets/background/rocks_2.png" id="1_kd560"]
 [ext_resource type="PackedScene" uid="uid://dlis0hhg2ec82" path="res://Scenes/Plane/Plane.tscn" id="2_5ucp4"]
 [ext_resource type="PackedScene" uid="uid://kc82xfenhmww" path="res://Scenes/Pipes/Pipes.tscn" id="3_ptuhf"]
+[ext_resource type="PackedScene" uid="uid://d3h72gjfyaglm" path="res://Scenes/GameOver/gameOver.tscn" id="5_2cmr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji3pk"]
 size = Vector2(680, 34)
@@ -35,5 +36,7 @@ position = Vector2(540, 540)
 
 [node name="Spawn Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Game Over" parent="." instance=ExtResource("5_2cmr2")]
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_timer_timeout"]
