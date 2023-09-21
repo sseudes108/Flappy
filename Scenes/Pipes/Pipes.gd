@@ -1,6 +1,6 @@
 extends Node2D
 
-const SCROLL_SPEED: float = 300.00
+const SCROLL_SPEED: float = 216.00
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,9 +12,14 @@ func _process(delta):
 
 
 func _on_screen_exit():
-	queue_free() # Replace with function body.
+	queue_free()
 
 
 func PipeCollision(body):
 	if body.is_in_group(GameManager.GROUP_PLANE) == true:
 		body.Die();
+
+
+func LaserCollision(body):
+	if body.is_in_group(GameManager.GROUP_PLANE) == true:
+		GameManager.IncrementScore()

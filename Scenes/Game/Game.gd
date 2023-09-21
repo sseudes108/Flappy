@@ -10,6 +10,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.SetScore(0)
 	GameManager.gameOver.connect(gameOver)
 	SpawnPipe()
 

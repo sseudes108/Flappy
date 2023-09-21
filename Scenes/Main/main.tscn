@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://wre2s7xaelt0"]
+[gd_scene load_steps=8 format=3 uid="uid://wre2s7xaelt0"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_dkc66"]
 [ext_resource type="Texture2D" uid="uid://mxbnvtkbsyvo" path="res://assets/background/sky.png" id="1_ncywk"]
+[ext_resource type="LabelSettings" uid="uid://cie4paom64do1" path="res://assets/LG_66_RED.tres" id="3_5f485"]
+[ext_resource type="FontFile" uid="uid://bg3783526myik" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="3_nas72"]
+[ext_resource type="LabelSettings" uid="uid://iybw8kwjsqt1" path="res://assets/LG_27_RED.tres" id="5_y3s6t"]
+[ext_resource type="AudioStream" uid="uid://cyw5a5u2c843y" path="res://assets/audio/bgm_menu.mp3" id="6_g3838"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_65v81"]
+font = ExtResource("3_nas72")
+font_size = 42
+font_color = Color(1, 0.952941, 0.945098, 1)
+outline_size = 6
+outline_color = Color(0, 0.431373, 0.164706, 0.917647)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -21,3 +32,51 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ncywk")
 expand_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 54
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 27
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Flappy
+Plane"
+label_settings = ExtResource("3_5f485")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Press Jump
+to play"
+label_settings = SubResource("LabelSettings_65v81")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score"
+label_settings = ExtResource("5_y3s6t")
+
+[node name="Highscore" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Highscore"
+label_settings = ExtResource("5_y3s6t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_g3838")
+autoplay = true

@@ -19,6 +19,7 @@ rotation = -3.14159
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(112, 0)
 
+[connection signal="body_entered" from="Laser" to="." method="LaserCollision"]
 [connection signal="body_entered" from="Pipe Lower" to="." method="PipeCollision"]
 [connection signal="body_entered" from="Pipe Upper" to="." method="PipeCollision"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exit"]
