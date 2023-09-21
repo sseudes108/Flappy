@@ -13,3 +13,8 @@ func _process(delta):
 
 func _on_screen_exit():
 	queue_free() # Replace with function body.
+
+
+func PipeCollision(body):
+	if body.is_in_group(GameManager.GROUP_PLANE) == true:
+		body.Die();

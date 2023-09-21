@@ -38,5 +38,7 @@ position = Vector2(540, 540)
 autostart = true
 
 [node name="Game Over" parent="." instance=ExtResource("5_2cmr2")]
+visible = false
+top_level = true
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_timer_timeout"]

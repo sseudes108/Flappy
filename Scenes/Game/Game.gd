@@ -5,10 +5,12 @@ extends Node2D
 @onready var pipesHolder = $"Pipes Holder"
 @onready var spawnU = $SpawnU
 @onready var spawnL = $SpawnL
-@onready var spawnTimer = $Timer
+@onready var spawnTimer = $"Spawn Timer"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.gameOver.connect(gameOver)
 	SpawnPipe()
 
 
@@ -22,6 +24,14 @@ func SpawnPipe():
 	
 	newPipes.position = Vector2(spawnU.position.x, yPos)
 	pipesHolder.add_child(newPipes)
+	
+func StopPipes() -> void:
+	spawnTimer.stop()
+	for pipe in pipesHolder.get_children():
+		pipe.set_process(false)
 
 func _on_timer_timeout():
 	SpawnPipe()
+
+func gameOver() -> void:
+	StopPipes()

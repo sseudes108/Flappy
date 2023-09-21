@@ -56,7 +56,7 @@ _data = {
 "Fly": SubResource("Animation_3mlh3")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Plane"]]
 position = Vector2(213, 129)
 script = ExtResource("1_dedvm")
 
