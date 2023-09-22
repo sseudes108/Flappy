@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://24ec325ptbun"]
+[gd_scene load_steps=11 format=3 uid="uid://24ec325ptbun"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_4k5vs"]
 [ext_resource type="Texture2D" uid="uid://c8obqlny2hf5o" path="res://assets/background/rocks_2.png" id="1_kd560"]
 [ext_resource type="PackedScene" uid="uid://dlis0hhg2ec82" path="res://Scenes/Plane/Plane.tscn" id="2_5ucp4"]
+[ext_resource type="PackedScene" uid="uid://bpehsva7502y1" path="res://Scenes/HUD/Hud.tscn" id="3_d6e7g"]
 [ext_resource type="PackedScene" uid="uid://kc82xfenhmww" path="res://Scenes/Pipes/Pipes.tscn" id="3_ptuhf"]
 [ext_resource type="PackedScene" uid="uid://d3h72gjfyaglm" path="res://Scenes/GameOver/gameOver.tscn" id="5_2cmr2"]
+[ext_resource type="AudioStream" uid="uid://5bdh71ucim1i" path="res://assets/audio/engine.mp3" id="7_k7y8u"]
+[ext_resource type="AudioStream" uid="uid://d4e01jty64ae6" path="res://assets/audio/game_over.wav" id="8_2c0tq"]
+[ext_resource type="PackedScene" uid="uid://36bmpbuqs0dh" path="res://Scenes/Parallax/ParallaxBackground.tscn" id="9_5hgda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji3pk"]
 size = Vector2(680, 34)
@@ -13,7 +17,11 @@ size = Vector2(680, 34)
 script = ExtResource("1_4k5vs")
 pipesScene = ExtResource("3_ptuhf")
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_5hgda")]
+follow_viewport_enabled = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-36, 316)
 texture = ExtResource("1_kd560")
 
@@ -37,8 +45,27 @@ position = Vector2(540, 540)
 [node name="Spawn Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Game Over" parent="." instance=ExtResource("5_2cmr2")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_d6e7g")]
+top_level = true
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 481.0
+offset_bottom = 76.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource("5_2cmr2")]
 visible = false
 top_level = true
+
+[node name="Engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k7y8u")
+autoplay = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2c0tq")
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wre2s7xaelt0"]
+[gd_scene load_steps=11 format=3 uid="uid://wre2s7xaelt0"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_dkc66"]
 [ext_resource type="Texture2D" uid="uid://mxbnvtkbsyvo" path="res://assets/background/sky.png" id="1_ncywk"]
@@ -13,6 +13,44 @@ font_size = 42
 font_color = Color(1, 0.952941, 0.945098, 1)
 outline_size = 6
 outline_color = Color(0, 0.431373, 0.164706, 0.917647)
+
+[sub_resource type="Animation" id="Animation_5hc40"]
+resource_name = "Flash"
+length = 0.72
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wvpou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr8e3"]
+_data = {
+"Flash": SubResource("Animation_5hc40"),
+"RESET": SubResource("Animation_wvpou")
+}
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -80,3 +118,9 @@ label_settings = ExtResource("5_y3s6t")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_g3838")
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flash"
+libraries = {
+"": SubResource("AnimationLibrary_mr8e3")
+}

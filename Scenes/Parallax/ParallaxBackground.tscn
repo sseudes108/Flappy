@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://36bmpbuqs0dh"]
+
+[ext_resource type="Script" path="res://Scenes/Parallax/ParallaxBackground.gd" id="1_bij2v"]
+[ext_resource type="PackedScene" uid="uid://dnc2ghwuc1h1q" path="res://Scenes/Parallax/ParallaxLayer.tscn" id="2_forh5"]
+[ext_resource type="Texture2D" uid="uid://mxbnvtkbsyvo" path="res://assets/background/sky.png" id="3_1m86v"]
+[ext_resource type="Texture2D" uid="uid://hljlb5k23v0h" path="res://assets/background/clouds_1.png" id="4_78p5g"]
+[ext_resource type="Texture2D" uid="uid://bd5yd1f2k4si8" path="res://assets/background/clouds_2.png" id="5_vsmh3"]
+[ext_resource type="Texture2D" uid="uid://cg4roryc8lv78" path="res://assets/background/rocks_1.png" id="6_8vbxr"]
+[ext_resource type="Texture2D" uid="uid://c8obqlny2hf5o" path="res://assets/background/rocks_2.png" id="7_6dn6c"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_bij2v")
+
+[node name="ParallaxLayer" parent="." instance=ExtResource("2_forh5")]
+position = Vector2(240, 427)
+texture = ExtResource("3_1m86v")
+
+[node name="ParallaxLayer2" parent="." instance=ExtResource("2_forh5")]
+position = Vector2(240, 427)
+texture = ExtResource("4_78p5g")
+scrollScale = 0.2
+
+[node name="ParallaxLayer3" parent="." instance=ExtResource("2_forh5")]
+position = Vector2(240, 427)
+texture = ExtResource("5_vsmh3")
+scrollScale = 0.3
+
+[node name="ParallaxLayer4" parent="." instance=ExtResource("2_forh5")]
+position = Vector2(240, 427)
+texture = ExtResource("6_8vbxr")
+scrollScale = 0.5
+
+[node name="ParallaxLayer5" parent="." instance=ExtResource("2_forh5")]
+position = Vector2(240, 427)
+texture = ExtResource("7_6dn6c")
+scrollScale = 0.7

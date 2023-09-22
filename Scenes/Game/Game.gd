@@ -1,21 +1,21 @@
 extends Node2D
 
 @export var pipesScene: PackedScene
-
+# Pipes
 @onready var pipesHolder = $"Pipes Holder"
 @onready var spawnU = $SpawnU
 @onready var spawnL = $SpawnL
 @onready var spawnTimer = $"Spawn Timer"
+# Audio
+@onready var engine = $Engine
+@onready var gameOverSound = $GameOverSound
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.SetScore(0)
-	GameManager.gameOver.connect(gameOver)
+	engine.play()
+	GameManager.gameOver.connect(GameOver)
 	SpawnPipe()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -34,5 +34,7 @@ func StopPipes() -> void:
 func _on_timer_timeout():
 	SpawnPipe()
 
-func gameOver() -> void:
+func GameOver() -> void:
 	StopPipes()
+	engine.stop()
+	gameOverSound.play()
